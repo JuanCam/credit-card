@@ -1,4 +1,4 @@
-## Credit Card
+## Credit Card React
 
 In the project directory, you can run: `npm install` and `npm start`
 
