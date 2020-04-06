@@ -1,0 +1,54 @@
+@import "../../css/abstract/mixins";
+
+.credit_card_form {
+  &__row {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint($large-viewport) {
+      @include calc-dimension(height, 30px);
+      @include calc-dimension(margin-top, 20px);
+      flex-direction: row;
+    }
+  }
+
+  &__input,
+  &__select {
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 5px;
+    flex-grow: 1;
+    font-size: 1.2rem;
+    border: 1px solid #adaaaa;
+    margin-top: 15px;
+
+    @include breakpoint($large-viewport) {
+      @include calc-dimension(margin-right, 10px);
+      @include calc-dimension(border-radius, 5px);
+      @include calc-dimension(border-width, 1px);
+      margin-top: 0;
+    }
+  }
+
+  &__group {
+    display: inline-flex;
+    flex-grow: 2;
+    border: 0;
+    padding: 0;
+    margin-top: 15px;
+    height: 30px;
+
+    @include breakpoint($large-viewport) {
+      margin-top: 0;
+      height: auto;
+    }
+  }
+
+  &__select {
+    height: 100%;
+    box-sizing: content-box;
+    flex-grow: 1;
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,241 @@
+@import "../../css/abstract/mixins";
+
+.credit_card {
+  width: $form-width;
+  height: 220px;
+  display: inline-block;
+  position: relative;
+  transition: transform 2s;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  color: #fff;
+  background-color: transparent;
+
+  @include breakpoint($large-viewport) {
+    @include calc-dimension(width, $form-width-large);
+    @include calc-dimension(height, 220px);
+  }
+
+  &__heading {
+    height: 40%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__chip {
+    width: 60px;
+    height: 40px;
+    margin-top: 12px;
+    background-image: linear-gradient(90deg, rgba(173, 170, 170, 1) 0%, rgba(240, 233, 234, 1) 70%);
+    border-radius: 5px;
+
+    @include breakpoint($large-viewport) {
+      @include calc-dimension(width, 60px);
+      @include calc-dimension(height, 40px);
+      @include calc-dimension(margin-top, 12px);
+      @include calc-dimension(border-radius,  5px);
+    }
+  }
+
+  &__brand {
+    height: 70px;
+    overflow-y: hidden;
+
+    @include breakpoint($large-viewport) {
+      @include calc-dimension(height, 70px);
+    }
+  }
+
+  &__icon {
+    display: inline-block;
+    transform: translateY(-100%);
+    transition: transform .4s;
+    font-size: 5rem;
+
+    &--exist {
+      transform: translateY(0);
+    }
+  }
+
+  &__number {
+    height: 30%;
+    font-size: 2.3rem;
+    text-align: center;
+    overflow-y: hidden;
+
+    @include breakpoint($large-viewport) {
+      font-size: 2.7rem;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+  }
+
+  &--flipped {
+    transform: rotateY(180deg);
+  }
+
+  &--not-flipped {
+    transform: rotateY(0deg);
+  }
+
+  &__front,
+  &__back {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    border-radius: 10px;
+    transition: transform 2s;
+    background: radial-gradient(ellipse at 0% 0%, transparent, #265026 90%),
+                radial-gradient(ellipse at 0% 0%, #265026 30%, transparent);
+    box-shadow: 6px 6px 6px 2px rgba(0, 0, 0, 0.4);
+    backface-visibility: hidden;
+    box-sizing: border-box;
+
+    @include breakpoint($large-viewport) {
+      @include calc-dimension(border-radius, 10px);
+      @include calc-dimension(padding-left, 12px);
+      @include calc-dimension(padding-right, 12px);
+    }
+  }
+
+  &__digit {
+    display: inline-flex;
+    flex-direction: column;
+    height: 50%;
+    overflow-y: hidden;
+    
+    &--last {
+      margin-right: 8px;
+
+      @include breakpoint($large-viewport) {
+        @include calc-dimension(margin-right, 10px);
+      }
+    }
+
+    &_hash {
+      transition: transform .6s cubic-bezier(.38, .43, .69, .89),
+                  opacity .5s;
+
+      &--visible {
+        opacity: .7;
+        transform: translateY(0);
+      }
+      &--hidden {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
+    }
+
+    &_value {
+      transition: transform .6s cubic-bezier(.38, .43, .69, .89),
+                  opacity .5s;
+      -webkit-text-stroke: 1.7px #265026;
+      text-shadow: -1px 1px 2px #0a1d0a,
+                    1px 1px 2px #0a1d0a,
+                    1px -1px 0 #0a1d0a,
+                    -1px -1px 0 #0a1d0a;
+
+      &--visible {
+        opacity: 1;
+        transform: translateY(-100%);
+      }
+      &--hidden {
+        opacity: 0;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__field {
+    display: flex;
+    height: 35px;
+
+    @include breakpoint($large-viewport) {
+      @include calc-dimension(height, 35px);
+    }
+  }
+
+  &__bar {
+    width: calc(100% + 20px);
+    height: 40px;
+    margin-top: 20px;
+    display: block;
+    margin-left: -10px;
+    background-color: #000;
+
+    @include breakpoint($large-viewport) {
+        @include calc-dimension(width, 370px);
+        @include calc-dimension(height, 40px);
+        @include calc-dimension(margin-top, 20px);
+        @include calc-dimension(margin-left, -12px);
+    }
+  }
+
+  &__value {
+    display: inline-block;
+    flex: 1;
+    margin-left: 10px;
+   
+    @include breakpoint($large-viewport) {
+      @include calc-dimension(margin-left, 10px);
+    }
+  }
+
+  &__label {
+    display: inline-block;
+    max-width: 35px;
+
+    &--middle {
+      line-height: 2rem;
+    }
+
+    &--small {
+      font-size: 1rem;
+    }
+
+    @include breakpoint($large-viewport) {
+      @include calc-dimension(max-width, 35px);
+    }
+  }
+
+  &__char {
+    display: inline-block;
+    font-weight: bold;
+    animation-name: char-animation;
+    animation-duration: 1.5s;
+    -webkit-text-stroke: 1px #265026;
+  }
+
+  &__cvv {
+    height: 40px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+    width: 70%;
+    background-color: #adaaaa;
+    color: #000;
+
+    @include breakpoint($large-viewport) {
+      @include calc-dimension(height, 40px);
+      @include calc-dimension(margin-top, 30px);
+    }
+
+    &_value {
+      align-self: center;
+      margin-right: 12px;
+      font-style: italic;
+
+      @include breakpoint($large-viewport) {
+        @include calc-dimension(margin-right, 12px);
+      }
+    }
+  }
+}

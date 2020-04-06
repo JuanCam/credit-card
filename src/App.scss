@@ -1,0 +1,22 @@
+@import "./css/abstract/mixins";
+
+.app {
+  display: block;
+  max-width: $form-width;
+  margin: 30px auto 0;
+  padding: 0 10px;
+
+  @include breakpoint($large-viewport) {
+    @include calc-dimension(margin-top, 50px);
+    @include calc-dimension(max-width, $form-width-large);
+    padding: 0;
+  }
+
+  .credit_card {
+    border-radius: 10px;
+
+    @include breakpoint($large-viewport) {
+      @include calc-dimension(border-radius, 10px);
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@import "./variables";
+
+@mixin calc-dimension($property, $value, $ref: $large-bp, $base: 100vw) {
+  #{$property}: $value * $base / $ref;
+}
+
+@keyframes char-animation {
+  0% {
+    opacity: 0;
+    transform: translate(100%, 25%) rotate(90deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@mixin breakpoint($viewport-size) {
+  @if $viewport-size=='mid' {
+    @media screen and (min-width: $mid-bp) {
+      @content;
+    }
+  }
+
+  @if $viewport-size=='large' {
+    @media screen and (min-width: $large-bp) {
+      @content;
+    }
+  }
+}
